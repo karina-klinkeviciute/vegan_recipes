@@ -46,12 +46,23 @@ class Recipe_ingredient(models.Model):
           
           
 class Recipe(models.Model):
+     class DifficultyChoices(object):
+          EASY=1
+          MEDIUM=2
+          DIFFICULT=3
+          CHOICES=(
+               (EASY, _("Easy")),
+               (MEDIUM, _("Medium")),
+               (DIFFICULT, _("Difficult"))
+               )
      title = models.TextField(help_text=_("Recipe title"))
      ingredients = models.ManyToManyField(
           to=Recipe_ingredient,
           help_text=_("select or add an ingredient with measurement"))
      time_required = models.DateTimeField(help_text=_("Enter total cooking time, approximately"))
-     difficulty = CharField(
+     difficulty = models.CharField(
           max_length=255,
-          
+          choices=DifficultyChoices.CHOICES)
+     description = models.TextField(
+          help_text=_("Enter preparation and cooking instructions here")
      )
