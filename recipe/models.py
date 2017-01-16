@@ -32,6 +32,26 @@ class Ingredient(models.Model):
           blank=True
           )
           
-class Recipe(models.Model)
-     title = models.TextField(help_text=_("Recipe title")
-     
+class Recipe_ingredient(models.Model):
+     ingredient = models.ManyToManyField(
+          to=Ingredient, 
+          help_text=_("select an ingredient from the list or add a new one")
+          )
+     measurement = models.ManyToManyField(
+          to=Measurement,
+          help_text=_("Select a type of measurement or add one (optional)"),
+          null=True,
+          blank=True
+          )
+          
+          
+class Recipe(models.Model):
+     title = models.TextField(help_text=_("Recipe title"))
+     ingredients = models.ManyToManyField(
+          to=Recipe_ingredient,
+          help_text=_("select or add an ingredient with measurement"))
+     time_required = models.DateTimeField(help_text=_("Enter total cooking time, approximately"))
+     difficulty = CharField(
+          max_length=255,
+          
+     )
