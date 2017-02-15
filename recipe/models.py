@@ -17,6 +17,8 @@ class Measurement(models.Model):
           max_length=20,
           help_text=_('An abreviation of a measurement, for example "kg"')
           )
+     def __str__(self):
+          return self.name
 
 class Ingredient(models.Model):
      """
@@ -31,33 +33,43 @@ class Ingredient(models.Model):
           null=True,
           blank=True
           )
+     def __str__(self):
+          return self.name
           
-class Recipe_ingredient(models.Model):
-     ingredient = models.ManyToManyField(
+class RecipeIngredient(models.Model):
+     ingredient = models.ForeignKey(
           to=Ingredient, 
           help_text=_("select an ingredient from the list or add a new one")
           )
-     measurement = models.ManyToManyField(
+     measurement = models.ForeignKey(
           to=Measurement,
           help_text=_("Select a type of measurement or add one (optional)"),
           null=True,
           blank=True
           )
+     amount = models.FloatField(
+          help_text="Amount of an ingredient needed for recipe",
+          null=True,
+          blank=True
+          )
+     def __str__(self):
+          return "{}".format(self.ingredient.name)
           
+          
+class DifficultyChoices(object):
+     EASY=1
+     MEDIUM=2
+     DIFFICULT=3
+     CHOICES=(
+          ("easy", _("Easy")),
+          ("medium", _("Medium")),
+          ("difficult", _("Difficult"))
+          )        
           
 class Recipe(models.Model):
-     class DifficultyChoices(object):
-          EASY=1
-          MEDIUM=2
-          DIFFICULT=3
-          CHOICES=(
-               (EASY, _("Easy")),
-               (MEDIUM, _("Medium")),
-               (DIFFICULT, _("Difficult"))
-               )
      title = models.TextField(help_text=_("Recipe title"))
      ingredients = models.ManyToManyField(
-          to=Recipe_ingredient,
+          to=RecipeIngredient,
           help_text=_("select or add an ingredient with measurement"))
      time_required = models.DateTimeField(help_text=_("Enter total cooking time, approximately"))
      difficulty = models.CharField(
@@ -66,3 +78,5 @@ class Recipe(models.Model):
      description = models.TextField(
           help_text=_("Enter preparation and cooking instructions here")
      )
+     def __str__(self):
+          return self.title

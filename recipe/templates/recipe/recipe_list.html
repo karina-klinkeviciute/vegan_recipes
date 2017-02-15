@@ -1,0 +1,14 @@
+{% extends "recipe/base.html" %}
+{% load static i18n %}
+{% block title %}{% trans "All recipes" %}{% endblock title %}
+{% block content %}
+
+<div id=recipe-list>
+{% for recipe in object_list %}
+<div class="recipe">
+{{ recipe.title }}
+</div>
+{% endfor %}
+</div>
+
+{% endblock content %}
