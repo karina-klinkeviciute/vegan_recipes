@@ -10,7 +10,7 @@ class Measurement(models.Model):
      A class for measurements of ingredients
      """
      name = models.CharField(
-          max_length=255, 
+          max_length=255,
           help_text=_('A name of a measurement, for example "kilogram"')
           )
      abbreviation = models.CharField(
@@ -35,10 +35,10 @@ class Ingredient(models.Model):
           )
      def __str__(self):
           return self.name
-          
+
 class RecipeIngredient(models.Model):
      ingredient = models.ForeignKey(
-          to=Ingredient, 
+          to=Ingredient,
           help_text=_("select an ingredient from the list or add a new one")
           )
      measurement = models.ForeignKey(
@@ -54,8 +54,8 @@ class RecipeIngredient(models.Model):
           )
      def __str__(self):
           return "{}".format(self.ingredient.name)
-          
-          
+
+
 class DifficultyChoices(object):
      EASY=1
      MEDIUM=2
@@ -63,20 +63,25 @@ class DifficultyChoices(object):
      CHOICES=(
           ("easy", _("Easy")),
           ("medium", _("Medium")),
-          ("difficult", _("Difficult"))
-          )        
-          
+          ("difficult", _("Master"))
+          )
+
 class Recipe(models.Model):
      title = models.TextField(help_text=_("Recipe title"))
      ingredients = models.ManyToManyField(
           to=RecipeIngredient,
           help_text=_("select or add an ingredient with measurement"))
-     time_required = models.DateTimeField(help_text=_("Enter total cooking time, approximately"))
+     time_required = models.IntegerField(
+          help_text=_("Enter total cooking time in minutes, approximately"))
      difficulty = models.CharField(
           max_length=255,
           choices=DifficultyChoices.CHOICES)
      description = models.TextField(
           help_text=_("Enter preparation and cooking instructions here")
-     )
+          )
+     photo = models.ImageField(
+        null=True,
+        blank=True
+        )
      def __str__(self):
           return self.title

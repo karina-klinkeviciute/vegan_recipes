@@ -5,12 +5,16 @@
      <title>
      {% block title %}{% trans "Home" %}{% endblock title %} | {% trans "Vegan recipes" %}
      </title>
+     {% block css %}
+     <link rel="stylesheet" type="style/css" href="{% static style.css %}">
+     {% endblock css %}
 {% endblock head %}
 </head>
 <body>
+
      {% block content %}
      {% endblock content %}
-     
+
      {% block footer %}
           {% include "recipe/includes/footer.html" %}
      {% endblock footer %}
