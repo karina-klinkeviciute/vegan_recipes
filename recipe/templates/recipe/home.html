@@ -1,8 +1,9 @@
-{% extends "base.html" %}
+{% extends "recipe/base.html" %}
 {% load static i18n %}
 {% block title %}{% trans "All recipes" %}{% endblock title %}
 {% block content %}
 <script src="https://use.fontawesome.com/0704467c52.js"></script>
+ehej
 <div id="home-recipe-list">
   {% for recipe in object_list %}
   <div class="recipe">
@@ -10,7 +11,7 @@
       {{ recipe.title }}
     </div>
     <div class="recipe-description">
-      {{ recipe.description|html }}
+      {{ recipe.description|safe|truncatechars_html:50 }}
     </div>
     <div class="recipe-time">
       <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -18,7 +19,7 @@
     </div>
     <div class="recipe-difficulty">
       {{ recipe.difficulty }}
-    </div>  
+    </div>
   </div>
 {% endfor %}
 
