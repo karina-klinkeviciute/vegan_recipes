@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # helper apps
+    'clear_cache',
+
     # project apps
     'recipe',
 ]
