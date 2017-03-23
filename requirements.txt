@@ -1,4 +1,7 @@
 Django==1.10.5
 django-clear-cache==0.3
+django-filter==1.0.1
+djangorestframework==3.6.2
+Markdown==2.6.8
 olefile==0.44
 Pillow==4.0.0
