@@ -1,5 +1,5 @@
 body {
-  background-image: url('static/images/background.jpg');
+  background-image: url('images/background.jpg');
   font-size: 18px;
 }
 
@@ -9,12 +9,13 @@ body {
 }
 
 #home-recipe-list .recipe{
-  max-width: 180 px;
+  width: 300 px;
+  max-width: 300 px;
   float: left;
   display: block;
   opacity: 0.8;
-  border: 3px solid black;
-  background: linear-gradient(to bottom, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%);
+  border: 10px solid black;
+  background: lime;
   color: white;
-  margin: 10 px;
+  margin: 30 px;
 }
