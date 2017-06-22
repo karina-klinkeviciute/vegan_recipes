@@ -44,6 +44,10 @@ INSTALLED_APPS = [
 
     # project apps
     'recipe',
+
+    # REST API
+    'rest_framework',
+    'api'
 ]
 
 MIDDLEWARE_CLASSES = [

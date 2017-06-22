@@ -7,9 +7,9 @@ class MeasurementSerializer(serializers.ModelSerializer):
     """
     Serializer for Measurements
     """
-    model = Measurement
 
     class Meta:
+        model = Measurement
         fields = "__all__"
 
 
@@ -17,9 +17,9 @@ class IngredientSerializer(serializers.ModelSerializer):
     """
     Serializer for Ingredients
     """
-    model = Ingredient
 
     class Meta:
+        model = Ingredient
         fields = "__all__"
 
 
@@ -27,9 +27,9 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
     """
     Serializer for Recipe Ingredients
     """
-    model = RecipeIngredient
 
     class Meta:
+        model = RecipeIngredient
         fields = "__all__"
 
 
@@ -37,7 +37,16 @@ class RecipeSerializer(serializers.ModelSerializer):
     """
     Serializer for Recipe
     """
-    model = Recipe
 
     class Meta:
-        fields = "__all__"
+        model = Recipe
+        # fields = "__all__"
+        fields = (
+            "title",
+            # "time_required",
+            "difficulty",
+            "description",
+            "photo",
+            "ingredients"
+        )
+        depth = 2
