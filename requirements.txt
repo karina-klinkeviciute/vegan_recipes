@@ -1,4 +1,4 @@
-Django>=2.0.0
+Django==3.0rc1
 django-clear-cache==0.3
 django-filter==1.0.1
 djangorestframework==3.6.3
