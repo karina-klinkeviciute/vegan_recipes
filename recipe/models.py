@@ -42,13 +42,17 @@ class Ingredient(models.Model):
 class RecipeIngredient(models.Model):
     ingredient = models.ForeignKey(
           to=Ingredient,
-          help_text=_("Select an ingredient from the list or add a new one")
+          help_text=_("Select an ingredient from the list or add a new one"),
+          on_delete=models.SET_NULL,
+          null=True,
+          blank=True
           )
     measurement = models.ForeignKey(
           to=Measurement,
           help_text=_("Select a type of measurement or add one (optional)"),
           null=True,
-          blank=True
+          blank=True,
+          on_delete=models.SET_NULL
           )
     amount = models.FloatField(
           help_text="Amount of an ingredient needed for recipe",
@@ -77,8 +81,12 @@ class Recipe(models.Model):
           to=RecipeIngredient,
           help_text=_("select or add an ingredient with measurement"))
     time_required = models.IntegerField(
+          null=True,
+          blank=True,
           help_text=_("Enter total cooking time in minutes, approximately"))
     difficulty = models.CharField(
+          null=True,
+          blank=True,
           max_length=255,
           choices=DifficultyChoices.CHOICES)
     description = models.TextField(

@@ -26,7 +26,7 @@ SECRET_KEY = '+80a0(80*hm#*1*=iix4dtlszmi_75uyyhldu&n%fk=(8h)tpq'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # graphql
+    'graphene_django',
+    'django_graphiql',
+
     # helper apps
     'clear_cache',
 
@@ -50,13 +54,12 @@ INSTALLED_APPS = [
     'api'
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -136,3 +139,7 @@ STATIC_URL = '/colstatic/'
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, "static"),
 # ]
+GRAPHENE = {
+ 'SCHEMA': 'vegan_recipe_site.schema.schema'
+}
+
