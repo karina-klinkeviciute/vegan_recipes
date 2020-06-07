@@ -2,7 +2,7 @@ from rest_framework import viewsets, permissions
 
 from recipe.api.serializers import MeasurementSerializer, IngredientSerializer, RecipeIngredientSerializer, \
     RecipeSerializer
-from recipe.models import Measurement, Ingredient, RecipeIngredient, Recipe
+from recipe.models import Measurement, Product, Ingredient, Recipe
 
 
 class MeasurementAPIViewSet(viewsets.ModelViewSet):
@@ -19,7 +19,7 @@ class IngredientAPIViewSet(viewsets.ModelViewSet):
     Viewset for Measurements
     """
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    queryset = Ingredient.objects.all()
+    queryset = Product.objects.all()
     serializer_class = IngredientSerializer
 
 
@@ -28,7 +28,7 @@ class RecipeIngredientAPIViewSet(viewsets.ModelViewSet):
     Viewset for Measurements
     """
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
-    queryset = RecipeIngredient.objects.all()
+    queryset = Ingredient.objects.all()
     serializer_class = RecipeIngredientSerializer
 
 

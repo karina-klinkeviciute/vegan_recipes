@@ -21,7 +21,7 @@ class Measurement(models.Model):
         return self.name
 
 
-class Ingredient(models.Model):
+class Product(models.Model):
     """
     A class for ingredients
     """
@@ -39,9 +39,9 @@ class Ingredient(models.Model):
         return self.name
 
 
-class RecipeIngredient(models.Model):
-    ingredient = models.ForeignKey(
-          to=Ingredient,
+class Ingredient(models.Model):
+    product = models.ForeignKey(
+          to=Product,
           help_text=_("Select an ingredient from the list or add a new one"),
           on_delete=models.SET_NULL,
           null=True,
@@ -61,7 +61,7 @@ class RecipeIngredient(models.Model):
           )
 
     def __str__(self):
-        return "{}".format(self.ingredient.name)
+        return "{}".format(self.product.name)
 
 
 class DifficultyChoices(object):
@@ -78,7 +78,7 @@ class DifficultyChoices(object):
 class Recipe(models.Model):
     title = models.TextField(help_text=_("Recipe title"))
     ingredients = models.ManyToManyField(
-          to=RecipeIngredient,
+          to=Ingredient,
           help_text=_("select or add an ingredient with measurement"))
     time_required = models.IntegerField(
           null=True,
