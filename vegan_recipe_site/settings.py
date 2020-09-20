@@ -51,10 +51,12 @@ INSTALLED_APPS = [
 
     # REST API
     'rest_framework',
-    'api'
+    'api',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'vegan_recipe_site.urls'
@@ -143,3 +146,7 @@ GRAPHENE = {
  'SCHEMA': 'vegan_recipe_site.schema.schema'
 }
 
+# CORS_ORIGIN_WHITELIST = [ 'http://localhost:8083', ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+# !!!!!!!!!!!!!! Temporarily!!!!!!!!!!!Delete on production!!!!!!!!!!
