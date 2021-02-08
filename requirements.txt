@@ -7,3 +7,4 @@ olefile
 Pillow
 graphene-django
 django-graphiql
+django-cors-headers

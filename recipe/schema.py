@@ -1,5 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
+from graphene_django_cud.mutations import DjangoCreateMutation
 
 from recipe.models import Recipe, Ingredient, Product
 
@@ -18,6 +19,10 @@ class ProductType(DjangoObjectType):
     class Meta:
         model = Product
 
+
+class CreateProduct(DjangoCreateMutation):
+    class Meta:
+        model = Product
 
 class Query:
 

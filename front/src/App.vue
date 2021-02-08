@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Fruits background" src="./assets/fruits_bg.png" class ="background">
-
     <header>Vegan Recipes</header>
-
-    <div class="recipes">
+    <div>
       <AllRecipes/>
     </div>
 
@@ -23,27 +20,25 @@ export default {
 </script>
 
 <style>
+body {
+  padding: 0;
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
-}
-.background
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -999;
-}
-.recipes {
-  background: rgba(256, 256, 256, 0.9);
-  max-width: 500px;
+  background: #125701;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-
+color: #a9eb03;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 48px;
+  margin-bottom: 50px;
 }
 </style>

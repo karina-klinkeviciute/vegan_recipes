@@ -1,11 +1,11 @@
 <template>
-  <div id="recipes">
+  <div id="recipes container" class="recipes">
 <!--<div v-for="ingredient in allIngredients" :key="ingredient.id">{{ ingredient.product.name }}</div>-->
     <div v-for="recipe in allRecipes" :key="recipe.id" class="recipe">
       <div class="recipe-title">{{ recipe.title }}</div>
       <img alt="Illustration for the recipe" class="recipe-photo" src="../assets/beach-cocktail.jpg" />
-      <div class="recipe-info">Time: {{recipe.timeRequired}}</div>
-      <div class="recipe-difficulty">Difficulty: {{recipe.difficulty}}</div>
+      <span class="recipe-info">Time: {{recipe.timeRequired}} </span>
+      <span class="recipe-difficulty">Difficulty: {{recipe.difficulty}}</span>
     </div>
   </div></template>
 
@@ -32,11 +32,21 @@ name: "allRecipes",
 <style scoped>
 .recipes {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
 }
 .recipe {
-  display: flex;
-  background: rgba(256, 256, 256, 0.9);
-  max-width: 400px;
+  background: rgba(256, 256, 256, 0.8);
+  max-width: 300px;
+  flex-basis: auto;
+  color: #125701;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  justify-content: flex-start;
+  align-self: flex-start;
 }
 
 .recipe-photo {
