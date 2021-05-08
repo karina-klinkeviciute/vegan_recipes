@@ -24,6 +24,14 @@ class CreateProduct(DjangoCreateMutation):
     class Meta:
         model = Product
 
+class CreateIngredient(DjangoCreateMutation):
+    class Meta:
+        model = Ingredient
+
+class CreateRecipe(DjangoCreateMutation):
+    class Meta:
+        model = Recipe
+
 class Query:
 
     product = graphene.Field(ProductType,

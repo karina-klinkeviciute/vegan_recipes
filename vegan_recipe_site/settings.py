@@ -149,4 +149,4 @@ GRAPHENE = {
 # CORS_ORIGIN_WHITELIST = [ 'http://localhost:8083', ]
 
 CORS_ALLOW_ALL_ORIGINS = True
-# !!!!!!!!!!!!!! Temporarily!!!!!!!!!!!Delete on production!!!!!!!!!!
+# todo !!!!!!!!!!!!!! Temporarily!!!!!!!!!!!Delete on production!!!!!!!!!!
